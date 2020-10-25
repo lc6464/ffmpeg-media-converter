@@ -2,22 +2,24 @@ import os, json, os.path
 
 class Converter:
 	def convert(self, root=None, extensions=None, toExt=None):
-		self.root = root if root != None else self.root
-		self.extensions = extensions if extensions != None else self.extensions
-		self.toExt = toExt if toExt != None else self.toExt
+		self.root = str(root) if root != None else self.root
+		self.extensions = list(extensions) if extensions != None else self.extensions
+		self.toExt = str(toExt).lower() if toExt != None else self.toExt
 		for Dir, _, files in os.walk(self.root):
 			Dir += '\\'
 			for file in files:
-				fn = os.path.splitext(file)
-				if fn[1] in self.extensions:
-					print(os.system('ffmpeg -i "%s" "%s"' % (Dir + file, Dir + fn[0] + self.toExt)))
+				fn, ext = os.path.splitext(file)
+				if ext in self.extensions:
+					print(os.system('ffmpeg -i "%s" "%s"' % (Dir + file, Dir + fn + self.toExt)))
 
-	def delete(self, root=None, extensions=None):
-		self.root = root if root != None else self.root
-		self.extensions = extensions if extensions != None else self.extensions
+	def delete(self, root=None, extensions=None, toExt=None):
+		self.root = str(root) if root != None else self.root
+		self.extensions = list(extensions) if extensions != None else self.extensions
+		self.toExt = str(toExt).lower() if toExt != None else self.toExt
 		for Dir, _, files in os.walk(self.root):
 			Dir += '\\'
 			for file in files:
-				fn = os.path.splitext(file)
-				if fn[1] in self.extensions:
-					os.remove(Dir + file)
+				fn, ext = os.path.splitext(file)
+				if ext in self.extensions:
+					if os.path.exists(Dir + fn + self.toExt):
+						os.remove(Dir + file)
