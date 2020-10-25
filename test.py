@@ -1,4 +1,4 @@
-import Converter as C
+import ffmpeg_media_converter as C
 
 t = input('0.图片\t1.视频\t2.音频：')
 r = input('目录（为空则为当前目录）：')

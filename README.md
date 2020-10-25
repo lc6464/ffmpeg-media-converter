@@ -2,6 +2,9 @@
 ### 基于 ffmpeg 的批量媒体文件格式转换器
 #### License: Apache License 2.0
 
+## 项目地址
+- [GitHub](https://github.com/lc6464/ffmpeg-media-converter)
+- [PyPI](https://pypi.org/project/ffmpeg-media-converter/)
 
 ## 用途
 - 将一个文件夹下**指定扩展名（可指定多个）**的**所有**媒体文件转换为**指定**的格式

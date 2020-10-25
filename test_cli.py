@@ -7,7 +7,7 @@ import click, sys
 @click.option("--delete", '-d', default=False, help='是否删除源文件，默认为不删除。', type=click.BOOL)
 def cli(root='.', extensions='', to_ext='', delete=False):
 	if not (extensions.strip(' ') == '' or extensions == None or to_ext.strip(' ') == '' or to_ext == None):
-		import Converter as C
+		import ffmpeg_media_converter as C
 		c = C.All(extensions, to_ext, root)
 		c.convert()
 		if delete:
