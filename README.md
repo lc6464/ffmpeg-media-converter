@@ -39,3 +39,11 @@
   - 条件：
     - 扩展名在源扩展名列表中
     - 缺陷 3 中介绍到的判断规则
+
+## 使用示例
+```python
+import ffmpeg_media_converter as C # 导入
+converter = C.Image() # 实例化图片转换器
+converter.convert() # 转换
+converter.delete() # 删除源文件
+```
